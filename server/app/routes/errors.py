@@ -12,7 +12,6 @@ def page_not_found(error):
     }
     return jsonify(response), 404
 
-
 @api.errorhandler(404)
 def page_not_found(error):
     response = {
