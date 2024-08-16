@@ -1,4 +1,5 @@
 from . import api
+from ..import db
 from flask import jsonify,request
 from ..model import Issue
 from ..exceptions import ValidationError

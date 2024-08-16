@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import CreateIssuePage from './pages/CreateIssuePage';
+import IssueListPage from './pages/IssueListPage';
+import IssueDetailPage from './pages/IssueDetailPage';
+import UpdateIssuePage from './pages/UpdateIssuePage';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app-container">
+        <Navbar />
+        <main className="flex-grow-1">
+          <Routes>
+            <Route path="/create" element={<CreateIssuePage />} />
+            <Route path="/issues/:id/update" element={<UpdateIssuePage />} />
+            <Route path="/issues/:id" element={<IssueDetailPage />} />
+            <Route path="/issues" element={<IssueListPage />} />
+            <Route path="/" element={<IssueListPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
